@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bob Code Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="brand">
+      <span class="brand-icon">B</span>
+      <span>Bob Code Editor</span>
+    </div>
+
+    <div class="toolbar">
+      <button id="newBtn">Créer</button>
+      <button id="openBtn">Ouvrir</button>
+      <button id="saveBtn">Sauvegarder</button>
+      <button id="analyzeBtn" class="bob-btn">
+        <span>✦</span> Analyser avec Bob
+      </button>
+    </div>
+
+    <div class="window-title" id="fileTitle">untitled.py</div>
+  </header>
+
+  <main class="workspace">
+    <aside class="activitybar">
+      <button class="activity active" title="Explorateur">▱</button>
+      <button class="activity" title="Recherche">⌕</button>
+      <button class="activity" title="Extensions">▦</button>
+      <div class="activity-spacer"></div>
+      <button class="activity" title="Paramètres">⚙</button>
+    </aside>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">EXPLORATEUR</div>
+      <div class="folder">
+        <span>⌄</span> BOB PROJECT
+      </div>
+      <div class="file active-file" id="sidebarFile">  ◻ untitled.py</div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">OUTILS BOB</div>
+        <div class="tool-item">✦ Analyse à la demande</div>
+        <div class="tool-item">▤ Explications ligne par ligne</div>
+        <div class="tool-item">⚠ Détection des erreurs</div>
+      </div>
+    </aside>
+
+    <section class="editor-area">
+      <div class="tabs">
+        <div class="tab active-tab">
+          <span>◻</span>
+          <span id="tabName">untitled.py</span>
+          <span class="tab-close">×</span>
+        </div>
+      </div>
+
+      <div class="editor-container">
+        <div class="line-numbers" id="lineNumbers">1</div>
+        <textarea id="codeEditor" spellcheck="false" wrap="off"
+          placeholder="# Écris ou colle ton code ici..."></textarea>
+      </div>
+    </section>
+
+    <aside class="right-panel">
+      <section class="panel mirror-panel">
+        <div class="panel-header">
+          <span>📖</span> MIROIR — EXPLICATIONS
+        </div>
+        <div class="panel-body" id="mirror">
+          <div class="empty-state">Clique sur <b>Analyser avec Bob</b> pour obtenir les explications.</div>
+        </div>
+      </section>
+
+      <section class="panel libraries-panel">
+        <div class="panel-header">
+          <span>📚</span> BIBLIOTHÈQUES
+        </div>
+        <div class="panel-body" id="libraries">
+          <div class="empty-state">Les imports détectés apparaîtront ici.</div>
+        </div>
+      </section>
+
+      <section class="panel errors-panel">
+        <div class="panel-header error-header">
+          <span>⚠</span> ERREURS / CORRECTIONS
+        </div>
+        <div class="panel-body" id="errors">
+          <div class="empty-state">Les erreurs et corrections proposées apparaîtront ici.</div>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <section class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-tabs">
+        <span class="terminal-tab active-terminal">TERMINAL</span>
+        <span>PROBLÈMES</span>
+        <span>SORTIE</span>
+      </div>
+      <button id="clearTerminal" class="small-button">Effacer</button>
+    </div>
+
+    <div class="terminal-output" id="terminalOutput">
+      <div>Bob Code Editor — terminal prêt.</div>
+      <div class="muted">L'intégration Bob sera branchée ici sans analyse automatique.</div>
+    </div>
+
+    <div class="terminal-input-row">
+      <span class="prompt">›</span>
+      <input id="terminalInput" type="text" placeholder="Terminal intégré — ex: python script.py">
+      <button id="runTerminal">Exécuter</button>
+    </div>
+  </section>
+
+  <footer class="statusbar">
+    <span>✓ Prêt</span>
+    <span>Python</span>
+    <span>UTF-8</span>
+    <span>LF</span>
+    <span class="status-spacer"></span>
+    <span id="statusMessage">Bob : en attente</span>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
